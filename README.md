@@ -1,9 +1,9 @@
 # P5 DMS: Docker based operation scenarios
 P5 DMS: container based configuration examples
 ## Getting started
-This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Services** work together using the **Retrieval** and **P52 Connector** service.
+This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Components** work together using the **Retrieval** and **P52 Connector** component.
 
-Beyond the specific examples, the configurations are transferable to most other ** P5 services **.
+Beyond the specific examples, the configurations are transferable to most other ** P5 DMS components **.
 ## Installing 
 1.) clone the repository
 ```bash
@@ -28,3 +28,10 @@ RETRIEVAL_PORT=8090
 ```bash
 $ . ./setenv.sh
 ```
+## P5 DMS Components
+The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used.
+Due to the instantiation options, there are two types of components:
+| **type**    | **description**   |  
+| ----------- | ---------- | 
+| plugin | Plugin components can be created standalone (detached) as an independent docker container, or activated as part of a host component (attached) in the host docker container. |
+| host | Host components can activate plugin components and are always created as an independent docker container. The plugins that can be activated are stored in the host component.|  
