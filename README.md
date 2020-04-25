@@ -35,4 +35,5 @@ Due to the instantiation options, there are two types of components:
 | ----------- | ---------- | 
 | plugin | Plugin components can be created standalone (***detached***) as an independent docker container, or activated as part of a host component (***attached***) in the host docker container. |
 | host | Host components can activate plugin components and are always created standalone (***detached***). The plugins that can be activated are stored in the host component.|  
+
 The **Retrieval** is a typical host component and the **P52 Connector** is a typical plugin.
