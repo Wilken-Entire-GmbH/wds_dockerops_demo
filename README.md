@@ -11,13 +11,11 @@ Beyond the specific examples, the configurations are transferable to most other 
 ## Installing 
 
 1.) clone the repository
-
 ```bash
 $ git clone https://github.com/wilken-entire-gmbh/wds_dockerops_demo.git 
 ```
 
 2.) change docker image reference in global/docker.env to your repository location and version. Maybe you prefer other port numbers...
-
 ```bash
 
 $ cat global/docker.env 
@@ -35,7 +33,6 @@ RETRIEVAL_PORT=8090
 ```
 
 3.) invoke setenv.sh to set demo environment
-
 ```bash
 $ . ./setenv.sh
 ```
