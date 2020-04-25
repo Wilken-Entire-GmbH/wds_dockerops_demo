@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo:4.2.3
+    deploy: 
+      restart_policy:
+        condition: on-failure
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME 
+      - MONGO_INITDB_ROOT_PASSWORD 
+    volumes:
+      - ${WDS_DEMO}/runtime/db:/data/db
+    networks:
+      - net
+
+  mongoadmin:
+    image: mongo-express:latest
+    depends_on:
+      - mongo 
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME 
+      - ME_CONFIG_MONGODB_ADMINPASSWORD
+    ports:
+      - ${DBADMIN_PORT}:8081
+    networks:
+      - net
+
+networks:
+  net: 
+    driver: overlay
+    attachable: true 

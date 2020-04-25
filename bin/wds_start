@@ -1,0 +1,19 @@
+#!/bin/bash
+
+STACKENV="${WDS_DEMO}/env/${1}.env"
+
+if [ ! -f $STACKENV ] ;
+then
+        AVAILABLE=$(ls -1 ${WDS_DEMO}/env | while read file ; do  echo ${file%.*}; done | xargs echo)
+        echo "error: ${1} is not a valid environment. Valid environments are ${AVAILABLE}"
+        exit 1
+fi
+
+set -a
+. ${WDS_DEMO}/global/docker.env
+. ${WDS_DEMO}/global/db.env
+. ${STACKENV}
+set +a
+
+docker stack deploy -c ${WDS_DEMO}/config/${STACKFILE}.yml ${1}
+

@@ -1,0 +1,47 @@
+version: "3.3"
+
+services:
+
+  retrieval:
+    image: ${DOCKER_RETRIEVAL} 
+    networks:
+      - nosql_net 
+      - net 
+    environment:
+      - DB_CONNECTION
+      - EVENT_DISPATCHER=http://dispatcher/retrieval 
+    ports:
+      - ${RETRIEVAL_PORT}:80
+    deploy:
+      mode: replicated
+      replicas: 3 
+      restart_policy:
+        condition: on-failure
+
+  p52connector:
+    image: ${DOCKER_P52_CONNECTOR} 
+    networks:
+      - net 
+    environment:
+      RETRIEVAL_URL: "http://retrieval"
+    ports:
+      - ${CONNECTOR_PORT}:80
+    deploy:
+      mode: replicated 
+      replicas: 1 
+      restart_policy:
+        condition: on-failure
+
+  dispatcher: 
+    image: ${DOCKER_DISPATCH} 
+    networks:
+      - net 
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  net:
+    driver: overlay
+  nosql_net: 
+    external: true 

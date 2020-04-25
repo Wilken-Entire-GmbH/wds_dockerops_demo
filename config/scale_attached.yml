@@ -1,0 +1,35 @@
+version: "3.3"
+
+services:
+
+  retrieval:
+    image: ${DOCKER_RETRIEVAL} 
+    networks:
+      - nosql_net 
+      - net 
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION}
+      PLUGINS: "[ { id: wds_p52_connector } ]"
+      EVENT_DISPATCHER: http://dispatcher/retrieval 
+    ports:
+      - ${CONNECTOR_PORT}:80
+      - ${RETRIEVAL_PORT}:80
+    deploy:
+      mode: replicated
+      replicas: 3 
+      restart_policy:
+        condition: on-failure
+
+  dispatcher: 
+    image: ${DOCKER_DISPATCH} 
+    networks:
+      - net 
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  net:
+    driver: overlay
+  nosql_net: 
+    external: true 
