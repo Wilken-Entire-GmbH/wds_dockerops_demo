@@ -64,9 +64,9 @@ Due to the instantiation options, there are two types of components:
 Due to the possibilities regarding component instantiation (***detached***/**attached**) and scaling, the demo consists of four examples. Each example creates a docker stack. Since all examples use the same port mappings, only one example can run at a time.
 
 | **example** | **description** |  
-| ----------- | ---------- | -------- |
-| detached | creates a **Retrieval** and an **P52 Connector**. |
-| attached | creates a **Retrieval** with the **P52 Connector** as a plugin. | 
+| ----------- | ---------- |
+| detached | creates a **Retrieval** and an **P52 Connector**. see [detached.yml](config/detached.yml) |
+| attached | creates a **Retrieval** with the **P52 Connector** as a plugin. see [attached.yml](config/attached.yml) | 
 | scale_detached | creates a scalable **Retrieval** and a scalable **P52 Connector** |
 | scale_attached | creates a scalable **Retrieval** with the **P52 Connector** as a plugin. |
 
