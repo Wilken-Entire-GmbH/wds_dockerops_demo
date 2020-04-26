@@ -33,6 +33,7 @@ The P5 DMS consists of a number of components. Depending on the use case, some o
 ### Features of components
 Components have some common basic features:
 | **feature** | **description** |
+|-------------|-----------------|
 | swagger | All routes are described via swagger. The embedded Swagger UI is accessible via `/api-docs`, while the Swagger file can be accessed via `/api/openapi.yaml.` |
 | metrics | Every components implements | 
 
