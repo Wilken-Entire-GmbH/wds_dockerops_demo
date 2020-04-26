@@ -24,7 +24,7 @@ DBADMIN_PORT=5000
 CONNECTOR_PORT=8080
 RETRIEVAL_PORT=8090
 ```
-3.) invoke setenv.sh to set demo environment
+3.) invoke [setenv.sh](setenv.sh) to set demo environment
 ```bash
 $ . ./setenv.sh
 ```
