@@ -1,5 +1,13 @@
 # P5 DMS: Docker based operation scenarios
 P5 DMS: container based configuration examples
+
+- [Getting started](#getting-started)
+- [Installing](#installing)
+- [Examples](#examples)
+- [P5 DMS Components](#p5-dms-components)
+  - [Common Component Features](#common-component-features)
+  - [Plugin Components](#plugin-components)
+
 ## Getting started
 This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Components** work together using the **Retrieval** and **P52 Connector** component.
 
@@ -28,6 +36,9 @@ RETRIEVAL_PORT=8090
 ```bash
 $ . ./setenv.sh
 ```
+
+## Examples
+
 ## P5 DMS Components
 The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used. Components communicate with each other and with the outside world via HTTP.
 ### Common Component Features
@@ -38,11 +49,12 @@ Components have some common basic features:
 | metrics | Every component implements a [Prometheus](http://www.prometheus.io/) metric client. Get metric data via `/metrics` | 
 | metric UI | In addition to the possibility to visualize metric data with [Prometheus](http://www.prometheus.io/) and [Grafana](https://grafana.com/), each component has an embedded visualization of metric basic data via `/swagger-stats/ux`. |
 
-### Host and Plugin components
+### Plugin Components
 Due to the instantiation options, there are two types of components:
 | **type**    | **description**   |  
 | ----------- | ---------- | 
 | plugin | Plugin components can be created standalone (***detached***) as an independent docker container, or activated as part of a host component (***attached***) in the host docker container. |
 | host | Host components can activate plugin components and are always created standalone (***detached***). The plugins that can be activated are stored in the host component.|  
 
-**Retrieval** is a host component while **P52 Connector** is plugin.
+**Retrieval** is a host component while **P52 Connector** is a plugin.
+
