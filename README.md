@@ -9,7 +9,7 @@ Beyond the specific examples, the configurations are transferable to most other 
 ```bash
 $ git clone https://github.com/wilken-entire-gmbh/wds_dockerops_demo.git 
 ```
-2.) change docker image reference in global/docker.env to your repository location and version. Maybe you prefer other port numbers...
+2.) change docker image referencee in [global/docker.env](global/docker.env) to your repository location and version. Maybe you prefer other port numbers...
 ```bash
 $ cat global/docker.env 
 
