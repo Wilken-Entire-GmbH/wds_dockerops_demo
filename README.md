@@ -3,10 +3,10 @@ P5 DMS: container based configuration examples
 
 - [Getting started](#getting-started)
 - [Installing](#installing)
-- [Examples](#examples)
 - [P5 DMS Components](#p5-dms-components)
   - [Common Component Features](#common-component-features)
   - [Plugin Components](#plugin-components)
+- [Examples](#examples)
 
 ## Getting started
 This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Components** work together using the **Retrieval** and **P52 Connector** component.
@@ -37,8 +37,10 @@ RETRIEVAL_PORT=8090
 $ . ./setenv.sh
 ```
 
-## Examples
-
+4.) Start the mongo database
+```bash
+$ wds_start nosql 
+```
 ## P5 DMS Components
 The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used. Components communicate with each other and with the outside world via HTTP.
 ### Common Component Features
@@ -57,4 +59,32 @@ Due to the instantiation options, there are two types of components:
 | host | Host components can activate plugin components and are always created standalone (***detached***). The plugins that can be activated are stored in the host component.|  
 
 **Retrieval** is a host component while **P52 Connector** is a plugin.
+
+## Examples
+Due to the possibilities regarding component instantiation (***detached***/**attached**) and scaling, the demo consists of four examples. Each example creates a docker stack. Since all examples use the same port mappings, only one example can run at a time.
+
+| **example** | **description** |  
+| ----------- | ---------- | -------- |
+| detached | creates a **Retrieval** and an **P52 Connector**. |
+| attached | creates a **Retrieval** with the **P52 Connector** as a plugin. | 
+| scale_detached | creates a scalable **Retrieval** and a scalable **P52 Connector** |
+| scale_attached | creates a scalable **Retrieval** with the **P52 Connector** as a plugin. |
+
+To start an example call `wds_start <example>`. F.e. with example 'attached'
+
+```bash
+# start the example attached
+$ wds_start attached
+
+# stop the example attached 
+$ wds_stop attached 
+```
+### Behaviour
+
+#### Docker Loadbalancer
+No matter which configuration, the internal component communication always takes place via the internal docker loadbalancer. As a result, in the "scale_attached" example, the P52 connector can also access another retrieval instance.
+
+#### attached vs. detached
+
+
 
