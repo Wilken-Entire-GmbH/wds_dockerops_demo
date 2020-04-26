@@ -35,7 +35,8 @@ Components have some common basic features:
 | **feature** | **description** |
 |-------------|-----------------|
 | swagger | All routes are described via swagger. The embedded Swagger UI is accessible via `/api-docs`, while the Swagger file can be accessed via `/api/openapi.yaml.` |
-| metrics | Every components implements | 
+| metrics | Every component implements a [Prometheus](http://www.prometheus.io/) metric client. Get metric data via `/metrics` | 
+| metric UI | In addition to the possibility to visualize metric data with [Prometheus](http://www.prometheus.io/) and [Grafana](https://grafana.com/), each component has an embedded visualization of metric basic data via `/swagger-stats/ux`. |
 
 ### Host and Plugin components
 Due to the instantiation options, there are two types of components:
@@ -44,4 +45,4 @@ Due to the instantiation options, there are two types of components:
 | plugin | Plugin components can be created standalone (***detached***) as an independent docker container, or activated as part of a host component (***attached***) in the host docker container. |
 | host | Host components can activate plugin components and are always created standalone (***detached***). The plugins that can be activated are stored in the host component.|  
 
-The **Retrieval** is a typical host component and the **P52 Connector** is a typical plugin.
+**Retrieval** is a host component while **P52 Connector** is plugin.
