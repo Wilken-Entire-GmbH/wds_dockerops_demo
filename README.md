@@ -15,7 +15,7 @@ P5 DMS: container based configuration examples
 ## Getting started
 This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Components** work together using the **Retrieval** and **P52 Connector** component.
 
-Beyond the specific examples, the configurations are transferable to most other ** P5 DMS components **.
+Beyond the specific examples, the configurations are transferable to most other **P5 DMS components**.
 ## Installing 
 1.) clone the repository
 ```bash
@@ -89,12 +89,12 @@ $ wds_stop attached
 No matter which configuration, the internal component communication always takes place via the internal docker loadbalancer. As a result, in the "scale_attached" example, the P52 connector can also access another retrieval instances.
 
 #### Scalable Retrieval 
-The **Retrieval** component has a special behaviour in scaling, because on startup it caches the whole configuration data. At runtime, configuration changes have to be reflected to all **Retrieval** instances. That is the task of the wds_dispatch container instance. The **Retrieval** instance which process the change, sends via a web-socket an event to wds_dispatch. wds_dispatch then broadcast the information back all **Retrieval** instances.
+The **Retrieval** component has a special behaviour in scaling, because on startup it caches the whole configuration data. At runtime, configuration changes have to be reflected to all **Retrieval** instances. That is the task of the wds_dispatch container instance. The **Retrieval** instance which process the change, sends via a web-socket an event to wds_dispatch. wds_dispatch then broadcast the information back to all **Retrieval** instances.
 
 #### Attached Vs. Detached
 Attached configurations have the advantage that significantly less memory is required. This is particularly important in multi tenant environments, since a large number of instances is required. Use `docker stats` to see the effect.
 
-On the other hand, plugins share the degree of scaling and CPU usage with the host component. The ** P52 Connector ** is not critical here, in contrast for e.g. the **OCR** component.
+On the other hand, plugins share the degree of scaling and CPU usage with the host component. The **P52 Connector** is not critical here, in contrast for e.g. the **OCR** component.
 
 Detached configurations can be scaled more independently. This independence is paid for with higher memory usage.
 
