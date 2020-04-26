@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   mongo:
-    image: mongo:4.2.3
+    image: ${DOCKER_MONGO}
     deploy: 
       restart_policy:
         condition: on-failure
@@ -15,7 +15,7 @@ services:
       - net
 
   mongoadmin:
-    image: mongo-express:latest
+    image: ${DOCKER_MONGO_ADMIN}
     depends_on:
       - mongo 
     deploy:
