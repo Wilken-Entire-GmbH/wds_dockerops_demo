@@ -9,7 +9,7 @@ Beyond the specific examples, the configurations are transferable to most other 
 ```bash
 $ git clone https://github.com/wilken-entire-gmbh/wds_dockerops_demo.git 
 ```
-2.) change docker image referencee in [global/docker.env](global/docker.env) to your repository location and version. Maybe you prefer other port numbers...
+2.) change docker image references in [global/docker.env](global/docker.env) to your repository location and version. Maybe you prefer other port numbers...
 ```bash
 $ cat global/docker.env 
 
@@ -29,7 +29,14 @@ RETRIEVAL_PORT=8090
 $ . ./setenv.sh
 ```
 ## P5 DMS Components
-The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used.
+The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used. Components communicate with each other and with the outside world via HTTP.
+### Features of components
+Components have some common basic features:
+| **feature** | **description** |
+| swagger | All routes are described via swagger. The embedded Swagger UI is accessible via `/api-docs`, while the Swagger file can be accessed via `/api/openapi.yaml.` |
+| metrics | Every components implements | 
+
+### Host and Plugin components
 Due to the instantiation options, there are two types of components:
 | **type**    | **description**   |  
 | ----------- | ---------- | 
