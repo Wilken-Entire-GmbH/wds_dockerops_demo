@@ -7,6 +7,9 @@ P5 DMS: container based configuration examples
   - [Common Component Features](#common-component-features)
   - [Plugin Components](#plugin-components)
 - [Examples](#examples)
+  - [Behaviour](#behaviour)
+    - [#docker-loadbalancer]
+    - [#scalable-retrieval]
 
 ## Getting started
 This repository contains the configuration of the **P5 Document Management** in a container-based scenario and explains how the **P5 DMS Components** work together using the **Retrieval** and **P52 Connector** component.
@@ -65,10 +68,10 @@ Due to the possibilities regarding component instantiation (***detached***/**att
 
 | **example** | **description** |  
 | ----------- | ---------- |
-| detached | creates a **Retrieval** and an **P52 Connector**. see [detached.yml](config/detached.yml) |
-| attached | creates a **Retrieval** with the **P52 Connector** as a plugin. see [attached.yml](config/attached.yml) | 
-| scale_detached | creates a scalable **Retrieval** and a scalable **P52 Connector** |
-| scale_attached | creates a scalable **Retrieval** with the **P52 Connector** as a plugin. |
+| detached | creates a **Retrieval** and an scalable **P52 Connector**. See [detached.yml](config/detached.yml) |
+| attached | creates a **Retrieval** with the **P52 Connector** as a plugin. See [attached.yml](config/attached.yml) | 
+| scale_detached | creates a scalable **Retrieval** and an scalable **P52 Connector**. See [scale_detached.yml](config/scale_detached.yml) and [Scalable Retrieval](#scalable-retrieval) |
+| scale_attached | creates a scalable **Retrieval** with the **P52 Connector** as a plugin. See [scale_attached.yml](config/scale_attached.yml) and [Scalable Retrieval](#scalable-retrieval) |
 
 To start an example call `wds_start <example>`. F.e. with example 'attached'
 
@@ -83,6 +86,10 @@ $ wds_stop attached
 
 #### Docker Loadbalancer
 No matter which configuration, the internal component communication always takes place via the internal docker loadbalancer. As a result, in the "scale_attached" example, the P52 connector can also access another retrieval instance.
+
+#### Scalable Retrieval 
+The **Retrieval** component has a special behaviour in scaling. On startup it caches the whole retrieval configuration data. Changes on this data have to be reflected to all **Retrieval** instances. That is the task of the wds_dispatch container instance.
+
 
 #### attached vs. detached
 
