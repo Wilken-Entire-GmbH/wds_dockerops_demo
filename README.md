@@ -30,7 +30,7 @@ $ . ./setenv.sh
 ```
 ## P5 DMS Components
 The P5 DMS consists of a number of components. Depending on the use case, some or all of them are used. Components communicate with each other and with the outside world via HTTP.
-### Features of components
+### Common Component Features
 Components have some common basic features:
 | **feature** | **description** |
 |-------------|-----------------|
